@@ -11,3 +11,17 @@ anime.broadcast
 anime.rank
 anime.popularity
 anime.rating
+
+Manga.title_english
+Manga.title_japanese
+Manga.synopsis
+Manga.image_url
+Manga.status
+Manga.type
+Manga.score
+Manga.rank
+Manga.popularity
+Manga.chapters
+Manga.volumes
+Manga.published
+Manga.authors
