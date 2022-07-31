@@ -1,0 +1,13 @@
+anime.title_english
+anime.title_japanese
+anime.synopsis
+anime.image_url
+anime.premiered
+anime.status
+anime.type
+anime.score
+anime.episodes
+anime.broadcast
+anime.rank
+anime.popularity
+anime.rating
