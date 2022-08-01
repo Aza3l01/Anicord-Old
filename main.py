@@ -113,6 +113,178 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed.add_field(name="Volumes", value=manga.volumes, inline=True)
         await ctx.respond(embed=embed)
 
+#help command
+@bot.command
+@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.command("help", "Get help")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def help(ctx):
+	if any(word in str(ctx.author.id) for word in prem_users):
+		await ctx.command.cooldown_manager.reset_cooldown(ctx)
+		embed = hikari.Embed(
+			title="__**Commands**__",
+			description="""
+            **__Main:__**
+            **/anime:** Look up an anime.
+            **/manga:** Look up a manga. \n
+            **__Misc:__**
+            **/invite:** Get the bot's invite link.
+            **/vote:** Get the link to vote at top.gg.
+            **/support:** Invite to join the support server.
+            **/donate:** Donate to support Weeb Bot.
+            **/more:**  Check out more bots from me.""",
+			color = 0x2f3136
+		)
+		await ctx.respond(embed=embed)
+	else:
+		embed = hikari.Embed(
+			title="__**Commands**__",
+			description="""
+            **__Main:__**
+            **/anime:** Look up an anime.
+            **/manga:** Look up a manga. \n
+            **__Misc:__**
+            **/invite:** Get the bot's invite link.
+            **/vote:** Get the link to vote at top.gg.
+            **/support:** Invite to join the support server.
+            **/donate:** Donate to support Weeb Bot.
+            **/more:**  Check out more bots from me.""",
+			color = 0x2f3136
+		)
+		await ctx.respond(embed=embed)
+
+#invite command
+@bot.command
+@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.command("invite", "Get the bot's invite link.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def invite(ctx):
+	if any(word in str(ctx.author.id) for word in prem_users):
+		await ctx.command.cooldown_manager.reset_cooldown(ctx)
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Invite:**
+            Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+	else:
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Invite:**
+            Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+
+#vote command
+@bot.command
+@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.command("vote", "Get the link to vote at top.gg.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def vote(ctx):
+	if any(word in str(ctx.author.id) for word in prem_users):
+		await ctx.command.cooldown_manager.reset_cooldown(ctx)
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Vote:**
+            Click [here] to vote on top.gg (thank you!)
+            (will work after it's on top.gg)""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+	else:
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Vote:**
+            Click [here] to vote on top.gg (thank you!)
+            (will work after it's on top.gg)""",
+			color = 0x2f3136
+		)
+		await ctx.respond(embed=embed)
+
+#support command
+@bot.command
+@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.command("support", "Invite to join the support server.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def support(ctx):
+	if any(word in str(ctx.author.id) for word in prem_users):
+		await ctx.command.cooldown_manager.reset_cooldown(ctx)
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Support:**
+            Click [here](https://discord.com/invite/RZsknj575x) to join the support server.""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+	else:
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Support:**
+            Click [here](https://discord.com/invite/RZsknj575x) to join the support server.""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+
+#donate command
+@bot.command
+@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.command("donate", "Donate to support Weeb Bot.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def donate(ctx):
+	if any(word in str(ctx.author.id) for word in prem_users):
+		await ctx.command.cooldown_manager.reset_cooldown(ctx)
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Donate:**
+            [Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+	else:
+		embed = hikari.Embed(
+			title="",
+			description="""
+            **Donate:**
+            [Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)""",
+			color=0x2f3136
+		)
+		await ctx.respond(embed=embed)
+
+#more command
+@bot.command
+@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.command("more", "Check out more bots from me.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def more(ctx):
+    if any(word in str(ctx.author.id) for word in prem_users):
+        await ctx.command.cooldown_manager.reset_cooldown(ctx)
+        embed = hikari.Embed(
+            title="",
+            description="""
+            **More:**
+            Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.""",
+            color=0x2f3136
+        )
+        await ctx.respond(embed=embed)
+    else:
+        embed = hikari.Embed(
+            title="",
+            description="""
+            **More:**
+            Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.""",
+            color=0x2f3136
+        )
+        await ctx.respond(embed=embed)
+
 #error handling
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
