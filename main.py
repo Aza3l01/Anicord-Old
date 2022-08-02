@@ -3,7 +3,8 @@ import lightbulb
 from mal import *
 
 bot = lightbulb.BotApp(
-    token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8"
+    token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8",
+    default_enabled_guilds=(857112618963566592)
 )
 
 #server count
@@ -47,6 +48,7 @@ async def anime(ctx: lightbulb.Context) -> None:
         embed.add_field(name="Ranking", value=anime.rank, inline=True)
         embed.add_field(name="Popularity", value=anime.popularity, inline=True)
         embed.add_field(name="Rating", value=anime.rating, inline=True)
+        embed.set_footer("Queries are served by an unoffical MAL API and Weeb Bot has no control over the content.")
         await ctx.respond(embed=embed)
     else:
         name = ctx.options.name
@@ -67,6 +69,7 @@ async def anime(ctx: lightbulb.Context) -> None:
         embed.add_field(name="Ranking", value=anime.rank, inline=True)
         embed.add_field(name="Popularity", value=anime.popularity, inline=True)
         embed.add_field(name="Rating", value=anime.rating, inline=True)
+        embed.set_footer("Queries are served by an unoffical MAL API and Weeb Bot has no control over the content.")
         await ctx.respond(embed=embed)
 
 #manga
@@ -93,6 +96,7 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed.add_field(name="Status", value=manga.status, inline=True)
         embed.add_field(name="Chapters", value=manga.chapters, inline=True)
         embed.add_field(name="Volumes", value=manga.volumes, inline=True)
+        embed.set_footer("Queries are served by an unoffical MAL API and Weeb Bot has no control over the content.")
         await ctx.respond(embed=embed)
     else:
         name = ctx.options.name
@@ -110,6 +114,7 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed.add_field(name="Status", value=manga.status, inline=True)
         embed.add_field(name="Chapters", value=manga.chapters, inline=True)
         embed.add_field(name="Volumes", value=manga.volumes, inline=True)
+        embed.set_footer("Queries are served by an unoffical MAL API and Weeb Bot has no control over the content.")
         await ctx.respond(embed=embed)
 
 #help command
