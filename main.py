@@ -122,32 +122,14 @@ async def help(ctx):
 		await ctx.command.cooldown_manager.reset_cooldown(ctx)
 		embed = hikari.Embed(
 			title="__**Commands**__",
-			description="""
-            **__Main:__**
-            **/anime:** Look up an anime.
-            **/manga:** Look up a manga. \n
-            **__Misc:__**
-            **/invite:** Get the bot's invite link.
-            **/vote:** Get the link to vote at top.gg.
-            **/support:** Invite to join the support server.
-            **/donate:** Donate to support Weeb Bot.
-            **/more:**  Check out more bots from me.""",
+			description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
 			color = 0x2f3136
 		)
 		await ctx.respond(embed=embed)
 	else:
 		embed = hikari.Embed(
 			title="__**Commands**__",
-			description="""
-            **__Main:__**
-            **/anime:** Look up an anime.
-            **/manga:** Look up a manga. \n
-            **__Misc:__**
-            **/invite:** Get the bot's invite link.
-            **/vote:** Get the link to vote at top.gg.
-            **/support:** Invite to join the support server.
-            **/donate:** Donate to support Weeb Bot.
-            **/more:**  Check out more bots from me.""",
+			description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
 			color = 0x2f3136
 		)
 		await ctx.respond(embed=embed)
@@ -161,19 +143,15 @@ async def invite(ctx):
 	if any(word in str(ctx.author.id) for word in prem_users):
 		await ctx.command.cooldown_manager.reset_cooldown(ctx)
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Invite:**
-            Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).""",
+			title="Invite:",
+			description="Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
 	else:
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Invite:**
-            Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).""",
+			title="Invite:",
+			description="Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
@@ -187,21 +165,15 @@ async def vote(ctx):
 	if any(word in str(ctx.author.id) for word in prem_users):
 		await ctx.command.cooldown_manager.reset_cooldown(ctx)
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Vote:**
-            Click [here] to vote on top.gg (thank you!)
-            (will work after it's on top.gg)""",
+			title="Vote:",
+			description="Click [here] to vote on top.gg. Thank you! \n (will work after it's on top.gg)",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
 	else:
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Vote:**
-            Click [here] to vote on top.gg (thank you!)
-            (will work after it's on top.gg)""",
+			title="Vote:",
+			description="Click [here] to vote on top.gg. Thank you! \n (will work after it's on top.gg)",
 			color = 0x2f3136
 		)
 		await ctx.respond(embed=embed)
@@ -215,19 +187,15 @@ async def support(ctx):
 	if any(word in str(ctx.author.id) for word in prem_users):
 		await ctx.command.cooldown_manager.reset_cooldown(ctx)
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Support:**
-            Click [here](https://discord.com/invite/RZsknj575x) to join the support server.""",
+			title="Support:",
+			description="Click [here](https://discord.com/invite/RZsknj575x) to join the support server.",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
 	else:
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Support:**
-            Click [here](https://discord.com/invite/RZsknj575x) to join the support server.""",
+			title="Support:",
+			description="Click [here](https://discord.com/invite/RZsknj575x) to join the support server.",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
@@ -241,19 +209,15 @@ async def donate(ctx):
 	if any(word in str(ctx.author.id) for word in prem_users):
 		await ctx.command.cooldown_manager.reset_cooldown(ctx)
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Donate:**
-            [Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)""",
+			title="Donate:",
+			description="[Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
 	else:
 		embed = hikari.Embed(
-			title="",
-			description="""
-            **Donate:**
-            [Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)""",
+			title="Donate:",
+			description="[Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)",
 			color=0x2f3136
 		)
 		await ctx.respond(embed=embed)
@@ -267,19 +231,15 @@ async def more(ctx):
     if any(word in str(ctx.author.id) for word in prem_users):
         await ctx.command.cooldown_manager.reset_cooldown(ctx)
         embed = hikari.Embed(
-            title="",
-            description="""
-            **More:**
-            Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.""",
+            title="More:",
+            description="Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.",
             color=0x2f3136
         )
         await ctx.respond(embed=embed)
     else:
         embed = hikari.Embed(
-            title="",
-            description="""
-            **More:**
-            Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.""",
+            title="More:",
+            description="Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.",
             color=0x2f3136
         )
         await ctx.respond(embed=embed)
@@ -288,7 +248,7 @@ async def more(ctx):
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     if isinstance(event.exception, lightbulb.CommandInvocationError):
-        await event.context.respond(f"Something went wrong during invocation of command `{event.context.command.name}`.")
+        await event.context.respond("I couldn't find what you were looking for :( \nShort forms don't always work. Please use the first few words of the series in your query if you get this message.")
         raise event.exception
 
     exception = event.exception.__cause__ or event.exception
