@@ -248,7 +248,7 @@ async def more(ctx):
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     if isinstance(event.exception, lightbulb.CommandInvocationError):
-        await event.context.respond("I couldn't find what you were looking for :( \nShort forms don't always work. Please use the first few words of the series in your query if you get this message.")
+        await event.context.respond("I couldn't find what you were looking for :( \nPlease use the first few words of the series in your query if you get this message.")
         raise event.exception
 
     exception = event.exception.__cause__ or event.exception
