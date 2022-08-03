@@ -4,7 +4,8 @@ from mal import *
 import random
 
 bot = lightbulb.BotApp(
-    token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8"
+    token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8",
+    default_enabled_guilds=(857112618963566592)
 )
 
 #server count
@@ -117,9 +118,102 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed.set_footer("Queries are served by an unoffical MAL API and Weeb Bot has no control over the content.")
         await ctx.respond(embed=embed)
 
+#rp help command
+@bot.command
+@lightbulb.command("roleplay", "Look up all the roleplay commands.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def roleplay(ctx):
+    embed = hikari.Embed(
+        title="Roleplay:",
+        description="**Affection:** \n /kiss, /cuddle, /lick, /pat, /shy \n \n **Negative Passive:** \n /pout, /shrug, /run, /die, /cry \n \n **Negative Offensive:** \n /bite, /slap, /shoot, /glare",
+        color=0x2f3136
+    )
+    embed.set_footer("Roleplay commands are still in development and may not always work.")
+    await ctx.respond(embed=embed)
+
+kiss = [
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385531167260683/1.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385531469254716/2.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385531817369670/3.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385532199059456/4.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385532526219284/5.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385554118492201/6.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385529632129086/7.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385530022203453/8.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385530357755954/9.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004385530768793711/10.gif"
+]
+
+#rp_kiss
+@bot.command
+@lightbulb.option("member", "The member you want to kiss.", type=hikari.User)
+@lightbulb.command("kiss", "Kiss someone.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def kiss(ctx):
+    embed = hikari.Embed(
+        title="",
+        description=f"**{ctx.author} kisses {ctx.options.member.mention}**",
+        color=0x2f3136
+    )
+    embed.set_image(random.choice(kiss))
+    await ctx.respond(embed=embed)
+
+cuddle = [
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402208600760422/1.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402232139206676/2.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402241953857546/3.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402251726598265/4.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402267979513936/5.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402488482484314/6.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402486662152342/7.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402487106744441/8.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402487475851324/9.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004402487991742585/10.gif"
+]
+
+#rp_cuddle
+@bot.command
+@lightbulb.option("cuddle", "The member you want to cuddle with.", type=hikari.User)
+@lightbulb.command("cuddle", "Cuddle someone.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def cuddle(ctx):
+    embed = hikari.Embed(
+        title="",
+        description=f"**{ctx.author} cuddles with {ctx.options.member.mention}**",
+        color=0x2f3136
+    )
+    embed.set_image(random.choice(cuddle))
+    await ctx.respond(embed=embed)
+
+lick = [
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409253026611360/1.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409253693489272/2.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409254368776372/3.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409255199252520/4.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409255635451964/5.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409256075866263/6.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409256482701352/7.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409257225113740/8.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409257791336629/9.gif",
+    "https://cdn.discordapp.com/attachments/924728966739279882/1004409258248503347/10.gif"
+]
+
+#rp_lick
+@bot.command
+@lightbulb.option("member", "The member you want to lick.", type=hikari.User)
+@lightbulb.command("lick", "Lick someone.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def lick(ctx):
+    embed = hikari.Embed(
+        title="",
+        description=f"**{ctx.author} licks {ctx.options.member.mention}**",
+        color=0x2f3136
+    )
+    embed.set_image(random.choice(lick))
+    await ctx.respond(embed=embed)
+
 bite = [
     "https://cdn.discordapp.com/attachments/924728966739279882/1004133801959637002/bc3f5037-b30f-4f26-989f-12461c31da71.gif",
-    "https://cdn.discordapp.com/attachments/924728966739279882/1004133802588778578/c78e4abc-4130-4fc7-a26d-8460d3da0af2.gif",
     "https://cdn.discordapp.com/attachments/924728966739279882/1004133802983030814/cb233dd9-5875-44c1-9c05-6287ad4cccb9.gif",
     "https://cdn.discordapp.com/attachments/924728966739279882/1004133803406663700/cfe3479f-f589-4048-884b-24c7bde2a684.gif",
     "https://cdn.discordapp.com/attachments/924728966739279882/1004133803733823609/1b0e22a5-0141-4a9f-8dc4-42613503d9c8.gif",
@@ -136,10 +230,10 @@ bite = [
 
 #rp_bite
 @bot.command
-@lightbulb.option("member", "The member you want to bite.", type=hikari.User, required=False)
-@lightbulb.command("bite", "bite someone")
+@lightbulb.option("member", "The member you want to bite.", type=hikari.User)
+@lightbulb.command("bite", "Bite someone.")
 @lightbulb.implements(lightbulb.SlashCommand)
-async def greet(ctx):
+async def bite(ctx):
     embed = hikari.Embed(
         title="",
         description=f"**{ctx.author} bites {ctx.options.member.mention}**",
@@ -150,135 +244,75 @@ async def greet(ctx):
 
 #help command
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("help", "Get help")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def help(ctx):
-	if any(word in str(ctx.author.id) for word in prem_users):
-		await ctx.command.cooldown_manager.reset_cooldown(ctx)
-		embed = hikari.Embed(
-			title="__**Commands**__",
-			description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n \n **__ Roleplay:__** \n /bite \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
-			color = 0x2f3136
-		)
-		await ctx.respond(embed=embed)
-	else:
-		embed = hikari.Embed(
-			title="__**Commands**__",
-			description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n \n **__ Roleplay:__** \n /bite \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
-			color = 0x2f3136
-		)
-		await ctx.respond(embed=embed)
+    embed = hikari.Embed(
+		title="__**Commands**__",
+		description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n **/roleplay:** Look up all the roleplay commands. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
+		color = 0x2f3136
+	)
+    await ctx.respond(embed=embed)
 
 #invite command
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("invite", "Get the bot's invite link.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def invite(ctx):
-	if any(word in str(ctx.author.id) for word in prem_users):
-		await ctx.command.cooldown_manager.reset_cooldown(ctx)
-		embed = hikari.Embed(
-			title="Invite:",
-			description="Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
-	else:
-		embed = hikari.Embed(
-			title="Invite:",
-			description="Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
+    embed = hikari.Embed(
+        title="Invite:",
+		description="Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).",
+		color=0x2f3136
+	)
+    await ctx.respond(embed=embed)
 
 #vote command
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("vote", "Get the link to vote at top.gg.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def vote(ctx):
-	if any(word in str(ctx.author.id) for word in prem_users):
-		await ctx.command.cooldown_manager.reset_cooldown(ctx)
-		embed = hikari.Embed(
-			title="Vote:",
-			description="Click [here] to vote on top.gg. Thank you! \n (will work after it's on top.gg)",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
-	else:
-		embed = hikari.Embed(
-			title="Vote:",
-			description="Click [here] to vote on top.gg. Thank you! \n (will work after it's on top.gg)",
-			color = 0x2f3136
-		)
-		await ctx.respond(embed=embed)
+    embed = hikari.Embed(
+		title="Vote:",
+		description="Click [here](https://top.gg/bot/1003247499911376956/vote) to vote on top.gg. Thank you!",
+		color=0x2f3136
+    )
+    await ctx.respond(embed=embed)
 
 #support command
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("support", "Invite to join the support server.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def support(ctx):
-	if any(word in str(ctx.author.id) for word in prem_users):
-		await ctx.command.cooldown_manager.reset_cooldown(ctx)
-		embed = hikari.Embed(
-			title="Support:",
-			description="Click [here](https://discord.com/invite/RZsknj575x) to join the support server.",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
-	else:
-		embed = hikari.Embed(
-			title="Support:",
-			description="Click [here](https://discord.com/invite/RZsknj575x) to join the support server.",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
+    embed = hikari.Embed(
+        title="Support:",
+		description="Click [here](https://discord.com/invite/RZsknj575x) to join the support server.",
+		color=0x2f3136
+	)
+    await ctx.respond(embed=embed)
 
 #donate command
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("donate", "Donate to support Weeb Bot.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def donate(ctx):
-	if any(word in str(ctx.author.id) for word in prem_users):
-		await ctx.command.cooldown_manager.reset_cooldown(ctx)
-		embed = hikari.Embed(
-			title="Donate:",
-			description="[Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
-	else:
-		embed = hikari.Embed(
-			title="Donate:",
-			description="[Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)",
-			color=0x2f3136
-		)
-		await ctx.respond(embed=embed)
+    embed = hikari.Embed(
+        title="Donate:",
+        description="[Buy me a coffee](https://www.buymeacoffee.com/azael) to support me in making Weeb Bot. Thank you! :)",
+		color=0x2f3136
+	)
+    await ctx.respond(embed=embed)
 
 #more command
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("more", "Check out more bots from me.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def more(ctx):
-    if any(word in str(ctx.author.id) for word in prem_users):
-        await ctx.command.cooldown_manager.reset_cooldown(ctx)
-        embed = hikari.Embed(
-            title="More:",
-            description="Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.",
-            color=0x2f3136
-        )
-        await ctx.respond(embed=embed)
-    else:
-        embed = hikari.Embed(
-            title="More:",
-            description="Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.",
-            color=0x2f3136
-        )
-        await ctx.respond(embed=embed)
+    embed = hikari.Embed(
+        title="More:",
+        description="Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.",
+        color=0x2f3136
+    )
+    await ctx.respond(embed=embed)
 
 #error handling
 @bot.listen(lightbulb.CommandErrorEvent)
