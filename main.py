@@ -1,4 +1,3 @@
-from email.policy import default
 import hikari
 import lightbulb
 from mal import *
