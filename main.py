@@ -1,7 +1,6 @@
 import hikari
 import lightbulb
 from mal import *
-import random
 
 bot = lightbulb.BotApp(
     token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8"
