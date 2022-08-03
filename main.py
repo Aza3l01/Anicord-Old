@@ -192,12 +192,8 @@ async def more(ctx):
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     if isinstance(event.exception, lightbulb.CommandInvocationError):
-        if event.context.command.name == anime or event.context.command.name == manga:
-            await event.context.respond("I couldn't find what you were looking for :( \nPlease use the first few words of the series in your query if you get this message.")
-            raise event.exception
-        else:
-            await event.context.respond(f"Something went wrong during invocation of command `{event.context.command.name}`. Please fill in all necessary arguments.")
-            raise event.exception
+        await event.context.respond("I couldn't find what you were looking for :( \nPlease use the first few words of the series in your query if you get this message.")
+        raise event.exception
 
     exception = event.exception.__cause__ or event.exception
 
