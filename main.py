@@ -4,8 +4,7 @@ from mal import *
 import random
 
 bot = lightbulb.BotApp(
-    token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8",
-    default_enabled_guilds=(857112618963566592)
+    token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8"
 )
 
 #server count
