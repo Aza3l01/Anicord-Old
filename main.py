@@ -131,22 +131,20 @@ async def manga(ctx: lightbulb.Context) -> None:
 
 #animeme
 @bot.command
-@lightbulb.command("animeme", "Get an anime meme.")
+@lightbulb.command("animeme1", "Get an anime meme.")
 @lightbulb.implements(lightbulb.SlashCommand)
-async def animeme(ctx: lightbulb.Context) -> None:
-    sub = reddit.subreddit('Animemes+goodanimemes')
-    posts = sub.new(limit=100)
-    random_post_number = random.randint(0,100)
-    for i,post in enumerate(posts):
-        if i==random_post_number:
-            print("sent animeme command")
+async def animeme1(ctx: lightbulb.Context) -> None:
+    sub = reddit.subreddit("Animemes+goodanimemes")
+    posts = [post for post in sub.hot(limit=30)]
+    random_post_number = random.randint(0, 30)
+    random_post = posts[random_post_number]
     embed = hikari.Embed(
-        title=post.title,
+        title=random_post.title,
         description="",
-        url=post.url,
+        url="https://www.reddit.com" + random_post.permalink,
         color=0x2f3136
     )
-    embed.set_image(post.url)
+    embed.set_image(random_post.url)
     await ctx.respond(embed=embed)
 
 #help command
