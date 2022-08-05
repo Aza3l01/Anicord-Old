@@ -44,6 +44,7 @@ async def anime(ctx: lightbulb.Context) -> None:
         embed = hikari.Embed(
             title=f"{anime.title_english} | {anime.title_japanese}",
             description=anime.synopsis,
+            url=anime.url,
             color=0x2f3136
         )
         embed.set_thumbnail(anime.image_url)
@@ -65,6 +66,7 @@ async def anime(ctx: lightbulb.Context) -> None:
         embed = hikari.Embed(
             title=f"{anime.title_english} | {anime.title_japanese}",
             description=anime.synopsis,
+            url=anime.url,
             color=0x2f3136
         )
         embed.set_thumbnail(anime.image_url)
@@ -95,6 +97,7 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed = hikari.Embed(
             title=f"{manga.title_english} | {manga.title_japanese}",
             description=manga.synopsis,
+            url=manga.url,
             color=0x2f3136
         )
         embed.set_thumbnail(manga.image_url)
@@ -113,6 +116,7 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed = hikari.Embed(
             title=f"{manga.title_english} | {manga.title_japanese}",
             description=manga.synopsis,
+            url=manga.url,
             color=0x2f3136
         )
         embed.set_thumbnail(manga.image_url)
@@ -130,8 +134,8 @@ async def manga(ctx: lightbulb.Context) -> None:
 @lightbulb.command("animeme", "Get an anime meme.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def animeme(ctx: lightbulb.Context) -> None:
-    sub = reddit.subreddit('Animemes')
-    posts = sub.hot(limit=100)
+    sub = reddit.subreddit('Animemes+goodanimemes')
+    posts = sub.new(limit=100)
     random_post_number = random.randint(0,100)
     for i,post in enumerate(posts):
         if i==random_post_number:
@@ -139,6 +143,7 @@ async def animeme(ctx: lightbulb.Context) -> None:
     embed = hikari.Embed(
         title=post.title,
         description="",
+        url=post.url,
         color=0x2f3136
     )
     embed.set_image(post.url)
