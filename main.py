@@ -151,7 +151,7 @@ async def animeme(ctx: lightbulb.Context) -> None:
 async def help(ctx):
     embed = hikari.Embed(
 		title="__**Commands**__",
-		description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
+		description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n **/animeme:** Get an anime meme. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
 		color = 0x2f3136
 	)
     await ctx.respond(embed=embed)
