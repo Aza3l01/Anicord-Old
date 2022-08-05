@@ -1,9 +1,18 @@
 import hikari
 import lightbulb
 from mal import *
+import praw
+import random
 
 bot = lightbulb.BotApp(
     token="MTAwMzI0NzQ5OTkxMTM3Njk1Ng.G11CNI.ZJYKDeBL_Zy5oYnRjBWgsOjmlpB_EXJjhXpjI8"
+)
+
+reddit = praw.Reddit(
+    client_id="ab7VFLYLR38dL3NwruCWhw",
+    client_secret="VEYILiZE2EaH_sO8e8SyfSCfXzEJ7w",
+    user_agent="reddit app to pull posts to discord app by /u/licensed_",
+    check_for_async=False
 )
 
 #server count
@@ -22,7 +31,7 @@ prem_users = [
 
 #anime
 @bot.command
-@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.add_cooldown(length = 10, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.option("name", "Anime")
 @lightbulb.command("anime", "Look up an anime.", auto_defer=True)
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -73,7 +82,7 @@ async def anime(ctx: lightbulb.Context) -> None:
 
 #manga
 @bot.command
-@lightbulb.add_cooldown(length = 20, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.add_cooldown(length = 10, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.option("name", "Manga")
 @lightbulb.command("manga", "Look up a manga.", auto_defer=True)
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -115,6 +124,25 @@ async def manga(ctx: lightbulb.Context) -> None:
         embed.add_field(name="Volumes", value=manga.volumes, inline=True)
         embed.set_footer("Queries are served by an unoffical MAL API and Weeb Bot has no control over the content.")
         await ctx.respond(embed=embed)
+
+#animeme
+@bot.command
+@lightbulb.command("animeme", "Get an anime meme.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def animeme(ctx: lightbulb.Context) -> None:
+    sub = reddit.subreddit('Animemes')
+    posts = sub.hot(limit=100)
+    random_post_number = random.randint(0,100)
+    for i,post in enumerate(posts):
+        if i==random_post_number:
+            print("sent animeme command")
+    embed = hikari.Embed(
+        title=post.title,
+        description="",
+        color=0x2f3136
+    )
+    embed.set_image(post.url)
+    await ctx.respond(embed=embed)
 
 #help command
 @bot.command
