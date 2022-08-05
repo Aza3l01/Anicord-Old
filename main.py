@@ -131,9 +131,9 @@ async def manga(ctx: lightbulb.Context) -> None:
 
 #animeme
 @bot.command
-@lightbulb.command("animeme1", "Get an anime meme.")
+@lightbulb.command("animeme", "Get an anime meme.")
 @lightbulb.implements(lightbulb.SlashCommand)
-async def animeme1(ctx: lightbulb.Context) -> None:
+async def animeme(ctx: lightbulb.Context) -> None:
     sub = reddit.subreddit("Animemes+goodanimemes")
     posts = [post for post in sub.hot(limit=30)]
     random_post_number = random.randint(0, 30)
