@@ -135,8 +135,8 @@ async def manga(ctx: lightbulb.Context) -> None:
 @lightbulb.implements(lightbulb.SlashCommand)
 async def animeme(ctx: lightbulb.Context) -> None:
     sub = reddit.subreddit("Animemes+goodanimemes")
-    posts = [post for post in sub.hot(limit=30)]
-    random_post_number = random.randint(0, 30)
+    posts = [post for post in sub.hot(limit=20)]
+    random_post_number = random.randint(0, 20)
     random_post = posts[random_post_number]
     embed = hikari.Embed(
         title=random_post.title,
@@ -145,6 +145,7 @@ async def animeme(ctx: lightbulb.Context) -> None:
         color=0x2f3136
     )
     embed.set_image(random_post.url)
+    embed.set_footer("This content is served by the Reddit API and Weeb Bot has no control over it.")
     await ctx.respond(embed=embed)
 
 #help command
@@ -157,6 +158,7 @@ async def help(ctx):
 		description="**__Main:__** \n **/anime:** Look up an anime. \n **/manga:** Look up a manga. \n **/animeme:** Get an anime meme. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Weeb Bot. \n **/more:** Check out more bots from me.",
 		color = 0x2f3136
 	)
+    embed.set_footer("Weeb Bot is very new and still under development. Feel free to join the support server, if you're having trouble using the bot :)")
     await ctx.respond(embed=embed)
 
 #invite command
@@ -223,7 +225,7 @@ async def more(ctx):
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     if isinstance(event.exception, lightbulb.CommandInvocationError):
-        await event.context.respond("I couldn't find what you were looking for :( \nPlease use the first few words of the series in your query if you get this message.")
+        await event.context.respond("I couldn't find what you were looking for :(")
         raise event.exception
 
     exception = event.exception.__cause__ or event.exception
