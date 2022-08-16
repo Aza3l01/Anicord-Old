@@ -131,22 +131,40 @@ async def manga(ctx: lightbulb.Context) -> None:
 
 #animeme
 @bot.command
+@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("animeme", "Get an anime meme.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def animeme(ctx: lightbulb.Context) -> None:
-    sub = reddit.subreddit("Animemes+goodanimemes")
-    posts = [post for post in sub.hot(limit=20)]
-    random_post_number = random.randint(0, 20)
-    random_post = posts[random_post_number]
-    embed = hikari.Embed(
-        title=random_post.title,
-        description="",
-        url="https://www.reddit.com" + random_post.permalink,
-        color=0x2f3136
-    )
-    embed.set_image(random_post.url)
-    embed.set_footer("This content is served by the Reddit API and Weeb Bot has no control over it.")
-    await ctx.respond(embed=embed)
+    if any(word in str(ctx.author.id) for word in prem_users):
+        await ctx.command.cooldown_manager.reset_cooldown(ctx)
+        sub = reddit.subreddit("Animemes+goodanimemes")
+        posts = [post for post in sub.hot(limit=20)]
+        random_post_number = random.randint(0, 20)
+        random_post = posts[random_post_number]
+        embed = hikari.Embed(
+            title=random_post.title,
+            description="",
+            url="https://www.reddit.com" + random_post.permalink,
+            color=0x2f3136
+        )
+        embed.set_image(random_post.url)
+        embed.set_footer("This content is served by the Reddit API and Weeb Bot has no control over it.")
+        await ctx.respond(embed=embed)
+    else:
+        sub = reddit.subreddit("Animemes+goodanimemes")
+        posts = [post for post in sub.hot(limit=20)]
+        random_post_number = random.randint(0, 20)
+        random_post = posts[random_post_number]
+        embed = hikari.Embed(
+            title=random_post.title,
+            description="",
+            url="https://www.reddit.com" + random_post.permalink,
+            color=0x2f3136
+        )
+        embed.set_image(random_post.url)
+        embed.set_footer("This content is served by the Reddit API and Weeb Bot has no control over it.")
+        await ctx.respond(embed=embed)
+
 
 #help command
 @bot.command
@@ -192,7 +210,7 @@ async def vote(ctx):
 async def support(ctx):
     embed = hikari.Embed(
         title="Support:",
-		description="Click [here](https://discord.com/invite/RZsknj575x) to join the support server.",
+		description="Click [here](https://discord.com/invite/xNb8mpySK8) to join the support server.",
 		color=0x2f3136
 	)
     await ctx.respond(embed=embed)
@@ -231,7 +249,7 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     exception = event.exception.__cause__ or event.exception
 
     if isinstance(exception, lightbulb.CommandIsOnCooldown):
-        await event.context.respond(f"`/{event.context.command.name}` is on cooldown. Retry in `{exception.retry_after:.0f}` seconds. ⏱️ \n To avoid cooldowns, become a member at https://www.buymeacoffee.com/azael. \n It helps keep the bot online.")
+        await event.context.respond(f"`/{event.context.command.name}` is on cooldown. Retry in `{exception.retry_after:.0f}` seconds. ⏱️ \n API commands are ratelimited to prevent spam abuse which could bring the bot down. \n To avoid cooldowns, become a member at https://www.buymeacoffee.com/azael. It helps keep the bot online.")
     else:
         raise exception
 
