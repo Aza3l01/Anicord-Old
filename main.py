@@ -165,7 +165,6 @@ async def animeme(ctx: lightbulb.Context) -> None:
         embed.set_footer("This content is served by the Reddit API and Weeb Bot has no control over it.")
         await ctx.respond(embed=embed)
 
-
 #help command
 @bot.command
 @lightbulb.command("help", "Get help")
@@ -249,7 +248,7 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     exception = event.exception.__cause__ or event.exception
 
     if isinstance(exception, lightbulb.CommandIsOnCooldown):
-        await event.context.respond(f"`/{event.context.command.name}` is on cooldown. Retry in `{exception.retry_after:.0f}` seconds. ⏱️ \n API commands are ratelimited to prevent spam abuse which could bring the bot down. \n To avoid cooldowns, become a member at https://www.buymeacoffee.com/azael. It helps keep the bot online.")
+        await event.context.respond(f"`/{event.context.command.name}` is on cooldown. Retry in `{exception.retry_after:.0f}` seconds. ⏱️ \n API commands are ratelimited to prevent spam abuse which could bring the bot down. \n To avoid cooldowns, become a member at https://www.buymeacoffee.com/azael.")
     else:
         raise exception
 
