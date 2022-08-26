@@ -169,7 +169,7 @@ async def animeme(ctx: lightbulb.Context) -> None:
 @bot.command
 @lightbulb.add_cooldown(length = 30, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.option("name", "Anime")
-@lightbulb.command("aniextended", "Look up an anime.", auto_defer=True)
+@lightbulb.command("aniextended", "Receive search queries to choose for a more detailed experience.", auto_defer=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def aniextended(ctx: lightbulb.Context) -> None:
     if any(word in str(ctx.author.id) for word in prem_users):
