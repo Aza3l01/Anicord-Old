@@ -31,11 +31,12 @@ prem_users = [
 
 #anisearch
 @bot.command
-@lightbulb.add_cooldown(length = 10, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.add_cooldown(length = 15, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.option("name", "Anime")
 @lightbulb.command("anisearch", "Look up an anime.", auto_defer=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def anisearch(ctx: lightbulb.Context) -> None:
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     if any(word in str(ctx.author.id) for word in prem_users):
         await ctx.command.cooldown_manager.reset_cooldown(ctx)
         name = ctx.options.name
@@ -84,11 +85,12 @@ async def anisearch(ctx: lightbulb.Context) -> None:
 
 #manga
 @bot.command
-@lightbulb.add_cooldown(length = 10, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.add_cooldown(length = 15, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.option("name", "Manga")
 @lightbulb.command("mangasearch", "Look up a manga.", auto_defer=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def mangasearch(ctx: lightbulb.Context) -> None:
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     if any(word in str(ctx.author.id) for word in prem_users):
         await ctx.command.cooldown_manager.reset_cooldown(ctx)
         name = ctx.options.name
@@ -131,10 +133,11 @@ async def mangasearch(ctx: lightbulb.Context) -> None:
 
 #animeme
 @bot.command
-@lightbulb.add_cooldown(length = 5, uses = 1, bucket = lightbulb.UserBucket)
+@lightbulb.add_cooldown(length = 15, uses = 1, bucket = lightbulb.UserBucket)
 @lightbulb.command("animeme", "Get an anime meme.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def animeme(ctx: lightbulb.Context) -> None:
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     if any(word in str(ctx.author.id) for word in prem_users):
         await ctx.command.cooldown_manager.reset_cooldown(ctx)
         sub = reddit.subreddit("Animemes+goodanimemes")
@@ -172,6 +175,7 @@ async def animeme(ctx: lightbulb.Context) -> None:
 @lightbulb.command("aniextended", "Receive search queries to choose for a more detailed experience.", auto_defer=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def aniextended(ctx: lightbulb.Context) -> None:
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     if any(word in str(ctx.author.id) for word in prem_users):
         await ctx.command.cooldown_manager.reset_cooldown(ctx)
         components = ctx.bot.rest.build_action_row()
@@ -336,12 +340,13 @@ async def on_component_interaction(event: hikari.InteractionCreateEvent) -> None
 @lightbulb.command("help", "Get help")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def help(ctx):
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     embed = hikari.Embed(
 		title="__**Commands**__",
 		description="**__Main:__** \n **/anisearch:** Look up an anime. \n **/mangasearch:** Look up a manga. \n **/animeme:** Get an anime meme. \n \n **__Extended Search:__** \n **/aniextended:** Receive search queries to choose for a more detailed experience. \n \n **__Misc:__** \n **/invite:** Get the bot's invite link. \n **/vote:** Get the link to vote at top.gg. \n **/support:** Invite to join the support server. \n **/donate:** Donate to support Anicord. \n **/more:** Check out more bots from me.",
 		color = 0x2f3136
 	)
-    embed.set_footer("Anicord is very new and still under development. Feel free to join the support server, if you're having trouble using the bot :)")
+    embed.set_footer("Anicord is very new and under development. Feel free to join the support server, if you're having trouble using the bot :)")
     await ctx.respond(embed=embed)
 
 #invite command
@@ -349,6 +354,7 @@ async def help(ctx):
 @lightbulb.command("invite", "Get the bot's invite link.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def invite(ctx):
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     embed = hikari.Embed(
         title="Invite:",
 		description="Get the bot's invite link [here](https://discord.com/api/oauth2/authorize?client_id=1003247499911376956&permissions=414464723008&scope=bot%20applications.commands).",
@@ -361,6 +367,7 @@ async def invite(ctx):
 @lightbulb.command("vote", "Get the link to vote at top.gg.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def vote(ctx):
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     embed = hikari.Embed(
 		title="Vote:",
 		description="Click [here](https://top.gg/bot/1003247499911376956/vote) to vote on top.gg. Thank you!",
@@ -373,6 +380,7 @@ async def vote(ctx):
 @lightbulb.command("support", "Invite to join the support server.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def support(ctx):
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     embed = hikari.Embed(
         title="Support:",
 		description="Click [here](https://discord.com/invite/xNb8mpySK8) to join the support server.",
@@ -385,6 +393,7 @@ async def support(ctx):
 @lightbulb.command("donate", "Donate to support Anicord.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def donate(ctx):
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     embed = hikari.Embed(
         title="Donate:",
         description="[Buy me a coffee](https://www.buymeacoffee.com/azael) to keep Anicord alive. Thank you! :)",
@@ -397,6 +406,7 @@ async def donate(ctx):
 @lightbulb.command("more", "Check out more bots from me.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def more(ctx):
+    await bot.rest.create_message(1013474210242375741, f"`{ctx.command.name}` was used.")
     embed = hikari.Embed(
         title="More:",
         description="Click [here](https://top.gg/user/67067136345571328) to check out more bots from me.",
@@ -408,7 +418,7 @@ async def more(ctx):
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     if isinstance(event.exception, lightbulb.CommandInvocationError):
-        await event.context.respond("I couldn't find what you were looking for :(")
+        await event.context.respond("I couldn't find what you were looking for.")
         raise event.exception
 
     exception = event.exception.__cause__ or event.exception
