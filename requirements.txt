@@ -3,7 +3,7 @@ aiosignal==1.2.0
 async-timeout==4.0.2
 attrs==21.4.0
 beautifulsoup4==4.11.1
-certifi==2022.6.15
+certifi==2023.7.22
 charset-normalizer==2.1.0
 colorama==0.4.5
 colorlog==6.6.0
